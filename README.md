@@ -10,9 +10,9 @@ The develop just have to add the package dependency and can consume this package
 
 For now the the developer can add the package dependency as:
     
-    flutter_utils_juni1289:
+    network_utils_pack:
         git:
-            url: https://juni12891226@bitbucket.org/juni1289team/flutter-utils-juni1289.git
+            url: https://github.com/juni12891226/flutter-network-utils/tree/develop
             ref: (required TAG)
 
 ## Additional information
