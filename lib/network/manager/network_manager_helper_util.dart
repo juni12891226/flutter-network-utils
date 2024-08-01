@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:network_utils_pack/network/util/imports_util.dart';
 
 class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
@@ -60,15 +62,15 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         requestMethod: requestMethodType);
 
     dio.httpClientAdapter = IOHttpClientAdapter(
-        // onHttpClientCreate: (_) {
-        //   // Don't trust any certificate just because their root cert is trusted.
-        //   final HttpClient client = HttpClient(context: SecurityContext(withTrustedRoots: false));
-        //   // You can test the intermediate / root cert here. We just ignore it.
-        //   client.badCertificateCallback = (cert, host, port) {
-        //     return true;
-        //   };
-        //   return client;
-        // },
+        onHttpClientCreate: (_) {
+          // Don't trust any certificate just because their root cert is trusted.
+          final HttpClient client = HttpClient(context: SecurityContext(withTrustedRoots: false));
+          // You can test the intermediate / root cert here. We just ignore it.
+          client.badCertificateCallback = (cert, host, port) {
+            return true;
+          };
+          return client;
+        },
 
         // validateCertificate: (cert, host, port) {
         //   // Check that the cert fingerprint matches the one we expect.

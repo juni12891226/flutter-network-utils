@@ -15,9 +15,9 @@ class ResponseWrapper<T> extends GenericObject<T> {
 
     if (wrapper.response is APIObjectTypeResponse) {
       var finalResponse = wrapper.response as APIObjectTypeResponse;
-      if (finalResponse.responseCode != '00') {
-        wrapper.error = ErrorResponse.fromJson(json!);
-      }
+      // if (finalResponse.responseCode != '00') {
+      //   wrapper.error = ErrorResponse.fromJson(json!);
+      // }
     }
     return wrapper;
   }
