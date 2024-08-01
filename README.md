@@ -12,7 +12,7 @@ For now the the developer can add the package dependency as:
     
     network_utils_pack:
         git:
-            url: https://github.com/juni12891226/flutter-network-utils/tree/develop
+            url: https://github.com/juni12891226/flutter-network-utils
             ref: (required TAG)
 
 ## Additional information

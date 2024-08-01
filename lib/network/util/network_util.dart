@@ -28,7 +28,7 @@ class NetworkUtil {
   ///But using print is highly not recommended!
   ///Signature ==> void showLog(String logData, {bool? isReleaseMode, String? logKey, bool? usePrint})
   void showLog(String logData) {
-    debugPrint("cdpX:::\nCDP Logs Starts:::\n$logData\nCDP Logs ends");
+    debugPrint("netWork-Utils_X:::\nCDP Logs Starts:::\n$logData\nCDP Logs ends");
   }
 
   ///Hide the keyboard UX point
