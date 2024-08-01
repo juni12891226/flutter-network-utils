@@ -1,8 +1,9 @@
 name: network_utils_pack
 description: "A new Flutter package project."
 version: 0.0.1
-homepage: https://github.com/juni12891226/flutter-network-utils/blob/feature/JH/initial_setup/README.md
-repository:
+homepage: https://github.com/juni12891226/flutter-network-utils/blob/develop/README.md
+repository: https://github.com/juni12891226/flutter-network-utils/tree/develop
+publish_to: none
 
 environment:
   sdk: '>=3.2.0 <4.0.0'
