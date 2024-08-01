@@ -7,12 +7,20 @@ abstract class RequestValidatorHelperUtil {
       Map<String, dynamic>? requestBody,
       required Dio dioInstance,
       required RequestCompletionCallback requestCompletionCallback,
-      required bool showRawLogs});
+      required bool showRawLogs,
+      required NetworkRequestMethodType networkRequestMethodType});
+
+  Future<void> processGetRequest<T extends Decodable>(
+      {required String baseURL,
+      required String apiEndPoint,
+      Map<String, dynamic>? requestBody,
+      required Dio dioInstance,
+      required RequestCompletionCallback requestCompletionCallback,
+      required bool showRawLogs,
+      required NetworkRequestMethodType networkRequestMethodType});
 
   bool isValidResponseJson(Response responseFromServer);
 
-  RequestCompletionHelperModel
-      onRequestCompletionGetHelperModel<T extends Decodable>(
-          {required Response responseFromServer,
-          CreateModelClassCallback<T>? createModelClassCallback});
+  RequestCompletionHelperModel onRequestCompletionGetHelperModel<T extends Decodable>(
+      {required Response responseFromServer, CreateModelClassCallback<T>? createModelClassCallback});
 }

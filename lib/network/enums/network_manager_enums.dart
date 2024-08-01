@@ -1,4 +1,4 @@
-enum NetworkRequestMethodType { post }
+enum NetworkRequestMethodType { post, get }
 
 enum RequestCompletionStatusEnums {
   success,

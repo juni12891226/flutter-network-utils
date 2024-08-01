@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:network_utils_pack/network/util/imports_util.dart';
 
 class NetworkUtil {
   /// private constructor
@@ -27,8 +28,11 @@ class NetworkUtil {
   ///You can use the [usePrint] if you want to show the logs in the pre-released build for your own logs
   ///But using print is highly not recommended!
   ///Signature ==> void showLog(String logData, {bool? isReleaseMode, String? logKey, bool? usePrint})
-  void showLog(String logData) {
-    debugPrint("netWork-Utils_X:::\nCDP Logs Starts:::\n$logData\nCDP Logs ends");
+  void showLog(String logData, {required bool showRawLogs, required NetworkRequestMethodType networkRequestMethodType}) {
+    if (showRawLogs) {
+      var networkRequestMethodTypeString = networkRequestMethodType.toString();
+      debugPrint("netWork-Utils_X:::\n{$networkRequestMethodTypeString} Request Logs Starts:::\n$logData\n Logs ends");
+    }
   }
 
   ///Hide the keyboard UX point
