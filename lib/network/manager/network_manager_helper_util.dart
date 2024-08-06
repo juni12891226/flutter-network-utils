@@ -61,29 +61,29 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         requestHeaders: requestHeaders ?? {},
         requestMethod: requestMethodType);
 
-    dio.httpClientAdapter = IOHttpClientAdapter(
-        onHttpClientCreate: (_) {
-          // Don't trust any certificate just because their root cert is trusted.
-          final HttpClient client = HttpClient(context: SecurityContext(withTrustedRoots: false));
-          // You can test the intermediate / root cert here. We just ignore it.
-          client.badCertificateCallback = (cert, host, port) {
-            return true;
-          };
-          return client;
-        },
-
-        // validateCertificate: (cert, host, port) {
-        //   // Check that the cert fingerprint matches the one we expect.
-        //   // We definitely require _some_ certificate.
-        //   if (cert == null) {
-        //     return false;
-        //   }
-        //   // Validate it any way you want. Here we only check that
-        //   // the fingerprint matches the OpenSSL SHA256.
-        //   bool valid = "8af954997043f60f932f899ce5474b2c695e4ea434a91acb3f47e2c41c942c3e" == sha256.convert(cert.der).toString();
-        //   return valid;
-        // },
-        );
+    // dio.httpClientAdapter = IOHttpClientAdapter(
+    //     onHttpClientCreate: (_) {
+    //       // Don't trust any certificate just because their root cert is trusted.
+    //       final HttpClient client = HttpClient(context: SecurityContext(withTrustedRoots: false));
+    //       // You can test the intermediate / root cert here. We just ignore it.
+    //       client.badCertificateCallback = (cert, host, port) {
+    //         return true;
+    //       };
+    //       return client;
+    //     },
+    //
+    //     // validateCertificate: (cert, host, port) {
+    //     //   // Check that the cert fingerprint matches the one we expect.
+    //     //   // We definitely require _some_ certificate.
+    //     //   if (cert == null) {
+    //     //     return false;
+    //     //   }
+    //     //   // Validate it any way you want. Here we only check that
+    //     //   // the fingerprint matches the OpenSSL SHA256.
+    //     //   bool valid = "8af954997043f60f932f899ce5474b2c695e4ea434a91acb3f47e2c41c942c3e" == sha256.convert(cert.der).toString();
+    //     //   return valid;
+    //     // },
+    //     );
 
     //check network here
     NetworkConnectionManagerHelperUtil.instance.isNetworkAvailable().then((bool isNetworkAvailable) async {

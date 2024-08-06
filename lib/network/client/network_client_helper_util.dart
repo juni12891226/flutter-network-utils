@@ -22,13 +22,10 @@ class NetworkClientHelperUtil {
       {required int connectTimeoutSecs, //default is 30 seconds
       required int sendTimeoutSecs, //default is 30 seconds
       required int receiveTimeoutSecs, //default is 30 seconds
-      required RequestCompletionCallback
-          requestCompletionCallback, //request completion callback
+      required RequestCompletionCallback requestCompletionCallback, //request completion callback
       required String apiEndPoint, //the baseURL appended with the endpoint
-      required Map<String, dynamic>
-          requestHeaders, //request headers to be send along the request
-      required NetworkRequestMethodType
-          requestMethod, // method to be specified in the caller method of the api
+      required Map<String, dynamic> requestHeaders, //request headers to be send along the request
+      required NetworkRequestMethodType requestMethod, // method to be specified in the caller method of the api
       required String baseURL,
       List<Interceptor>? dioInterceptors}) {
     var options = BaseOptions(
@@ -38,12 +35,9 @@ class NetworkClientHelperUtil {
       //response type of the request, now only JSON
       method: requestMethod == NetworkRequestMethodType.post ? "post" : "get",
       //request method that is POST or GET
-      sendTimeout:
-          _getAPITimeoutDuration(givenAPITimeoutInSeconds: sendTimeoutSecs),
-      connectTimeout:
-          _getAPITimeoutDuration(givenAPITimeoutInSeconds: connectTimeoutSecs),
-      receiveTimeout:
-          _getAPITimeoutDuration(givenAPITimeoutInSeconds: receiveTimeoutSecs),
+      sendTimeout: _getAPITimeoutDuration(givenAPITimeoutInSeconds: sendTimeoutSecs),
+      connectTimeout: _getAPITimeoutDuration(givenAPITimeoutInSeconds: connectTimeoutSecs),
+      receiveTimeout: _getAPITimeoutDuration(givenAPITimeoutInSeconds: receiveTimeoutSecs),
       headers: requestHeaders,
       receiveDataWhenStatusError: true,
       followRedirects: false,
@@ -57,12 +51,22 @@ class NetworkClientHelperUtil {
       dio.interceptors.addAll(dioInterceptors);
     }
 
+    dio.interceptors.add(
+      TalkerDioLogger(
+        settings: const TalkerDioLoggerSettings(
+          printRequestHeaders: true,
+          printResponseMessage: true,
+          printResponseData: true,
+          printErrorData: true,
+          printErrorMessage: true,
+        ),
+      ),
+    );
     return dio;
   }
 
   ///Get the timeout in Duration Object
   _getAPITimeoutDuration({required int givenAPITimeoutInSeconds}) {
-    return Duration(
-        seconds: givenAPITimeoutInSeconds > 0 ? givenAPITimeoutInSeconds : 30);
+    return Duration(seconds: givenAPITimeoutInSeconds > 0 ? givenAPITimeoutInSeconds : 30);
   }
 }
