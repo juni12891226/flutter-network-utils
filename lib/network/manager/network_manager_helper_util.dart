@@ -141,7 +141,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         }
         return RequestCompletionHelperModel(
             responseWrapper: responseWrapper,
-            requestResponse: responseFromServer.data.toString(),
+            requestResponse: NetworkUtil.instance.getEncodedJSONString(toEncode: responseFromServer.data),
             reason: "Success (200).",
             responseCompletionStatus: RequestCompletionStatusEnums.success,
             isSuccess: true);
