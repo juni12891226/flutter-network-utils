@@ -133,14 +133,14 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
       if (isValidResponseJson(responseFromServer)) {
         //success
 
-        ResponseWrapper<T>? responseWrapper;
-        if (createModelClassCallback != null) {
-          responseWrapper = ResponseWrapper.init(
-              create: createModelClassCallback,
-              json: NetworkUtil.instance.getDecodedJSON(responseBody: NetworkUtil.instance.getEncodedJSONString(toEncode: responseFromServer.data)));
-        }
+        // ResponseWrapper<T>? responseWrapper;
+        // if (createModelClassCallback != null) {
+        //   responseWrapper = ResponseWrapper.init(
+        //       create: createModelClassCallback,
+        //       json: NetworkUtil.instance.getDecodedJSON(responseBody: NetworkUtil.instance.getEncodedJSONString(toEncode: responseFromServer.data)));
+        // }
         return RequestCompletionHelperModel(
-            responseWrapper: responseWrapper,
+            // responseWrapper: responseWrapper,
             requestResponse: responseFromServer.data.toString(),
             reason: "Success (200).",
             responseCompletionStatus: RequestCompletionStatusEnums.success,
