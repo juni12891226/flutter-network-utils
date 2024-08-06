@@ -174,6 +174,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
   ///[responseFromServer] is required param, the Dio Response
   @override
   bool isValidResponseJson(Response responseFromServer) {
+    return true;
     if (responseFromServer.data != null) {
       //decoding the string to json
       dynamic json = NetworkUtil.instance.getDecodedJSON(responseBody: NetworkUtil.instance.getEncodedJSONString(toEncode: responseFromServer.data));
