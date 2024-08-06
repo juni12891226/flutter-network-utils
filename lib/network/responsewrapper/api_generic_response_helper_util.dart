@@ -2,7 +2,7 @@ import 'package:network_utils_pack/network/util/imports_util.dart';
 
 class APIObjectTypeResponse<T> extends GenericObject<T>
     implements Decodable<APIObjectTypeResponse<T>> {
-  String? responseCode;
+  int? responseCode;
   String? responseMessage;
   String? status;
   T? data;
@@ -12,7 +12,7 @@ class APIObjectTypeResponse<T> extends GenericObject<T>
 
   @override
   APIObjectTypeResponse<T> decode(dynamic json) {
-    responseCode = (json['responseCode'] ?? '-1').toString();
+    responseCode = json['responseCode'] ?? -1;
     responseMessage = json['responseMessage'] ?? '';
     status = json['status'] ?? '';
 
@@ -27,7 +27,7 @@ class APIObjectTypeResponse<T> extends GenericObject<T>
 
 class APIListTypeResponse<T> extends GenericObject<T>
     implements Decodable<APIListTypeResponse<T>> {
-  String? responseCode;
+  int? responseCode;
   String? responseMessage;
   String? status;
   List<T>? data;
@@ -37,7 +37,7 @@ class APIListTypeResponse<T> extends GenericObject<T>
 
   @override
   APIListTypeResponse<T> decode(dynamic json) {
-    responseCode = json['responseCode'] ?? "";
+    responseCode = json['responseCode'] ?? -1;
     responseMessage = json['responseMessage'] ?? "";
     status = json['status'] ?? '';
     data = [];
