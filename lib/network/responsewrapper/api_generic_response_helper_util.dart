@@ -12,8 +12,8 @@ class APIObjectTypeResponse<T> extends GenericObject<T>
 
   @override
   APIObjectTypeResponse<T> decode(dynamic json) {
-    responseCode = (json['code'] ?? '-1').toString();
-    responseMessage = json['message'] ?? '';
+    responseCode = (json['responseCode'] ?? '-1').toString();
+    responseMessage = json['responseMessage'] ?? '';
     status = json['status'] ?? '';
 
     data = (json as Map<String, dynamic>).containsKey('data')
@@ -41,12 +41,12 @@ class APIListTypeResponse<T> extends GenericObject<T>
     responseMessage = json['responseMessage'] ?? "";
     status = json['status'] ?? '';
     data = [];
-    // if ((json as Map<String, dynamic>).containsKey('data') &&
-    //     json["data"] != null) {
+    if ((json as Map<String, dynamic>).containsKey('data') &&
+        json["data"] != null) {
       json['data'].forEach((item) {
         data!.add(genericObject(item));
       });
-    // }
+    }
 
     return this;
   }
