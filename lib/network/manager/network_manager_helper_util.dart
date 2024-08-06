@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:network_utils_pack/network/util/imports_util.dart';
@@ -141,7 +142,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         // }
         return RequestCompletionHelperModel(
             // responseWrapper: responseWrapper,
-            requestResponse: responseFromServer.data.toString(),
+            requestResponse: jsonEncode(responseFromServer.data),
             reason: "Success (200).",
             responseCompletionStatus: RequestCompletionStatusEnums.success,
             isSuccess: true);
