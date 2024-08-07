@@ -14,5 +14,4 @@ export 'package:network_utils_pack/network/util/constants.dart';
 export 'package:network_utils_pack/network/util/network_util.dart';
 export 'package:network_utils_pack/network/validator/request_validator_extension.dart';
 export 'package:network_utils_pack/network/validator/request_validator_helper_util.dart';
-export 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
-export 'package:talker_dio_logger/talker_dio_logger_settings.dart';
+export 'package:pretty_dio_logger/pretty_dio_logger.dart';

@@ -51,17 +51,7 @@ class NetworkClientHelperUtil {
       dio.interceptors.addAll(dioInterceptors);
     }
 
-    dio.interceptors.add(
-      TalkerDioLogger(
-        settings: const TalkerDioLoggerSettings(
-          printRequestHeaders: true,
-          printResponseMessage: true,
-          printResponseData: true,
-          printErrorData: true,
-          printErrorMessage: true,
-        ),
-      ),
-    );
+    dio.interceptors.add(PrettyDioLogger(requestHeader: true, requestBody: true, responseBody: true, responseHeader: false, error: true, compact: false, maxWidth: 2048));
     return dio;
   }
 
