@@ -31,6 +31,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
       required String apiEndPoint,
       Map<String, dynamic>? requestHeaders,
       Map<String, dynamic>? requestBody,
+      Map<String, dynamic>? queryParameters,
       int connectTimeoutSecs = 30,
       int sendTimeoutSecs = 30,
       int receiveTimeoutSecs = 30,
@@ -91,6 +92,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
       if (isNetworkAvailable) {
         if (requestMethodType == NetworkRequestMethodType.post) {
           processPostRequest(
+              queryParameters: queryParameters,
               showRawLogs: showRawLogs,
               baseURL: baseURL,
               apiEndPoint: apiEndPoint,
@@ -101,6 +103,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
               networkRequestMethodType: requestMethodType);
         } else if (requestMethodType == NetworkRequestMethodType.get) {
           processGetRequest(
+              queryParameters: queryParameters,
               showRawLogs: showRawLogs,
               baseURL: baseURL,
               apiEndPoint: apiEndPoint,
@@ -208,12 +211,13 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
       required RequestCompletionCallback requestCompletionCallback,
       required NetworkRequestMethodType networkRequestMethodType,
       Map<String, dynamic>? requestBody,
+      Map<String, dynamic>? queryParameters,
       bool showRawLogs = false,
       CreateModelClassCallback<T>? createModelClassCallback}) async {
     try {
       var requestStopWatchTimer = Stopwatch();
       requestStopWatchTimer.start();
-      await dioInstance.post(apiEndPoint, data: requestBody ?? {}).then((Response responseFromServer) {
+      await dioInstance.post(apiEndPoint, data: requestBody ?? {}, queryParameters: queryParameters ?? {}).then((Response responseFromServer) {
         var elapsedTimeDuration = requestStopWatchTimer.elapsed.toString();
         requestStopWatchTimer.stop();
 
@@ -250,12 +254,13 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
       required RequestCompletionCallback requestCompletionCallback,
       required NetworkRequestMethodType networkRequestMethodType,
       Map<String, dynamic>? requestBody,
+      Map<String, dynamic>? queryParameters,
       bool showRawLogs = false,
       CreateModelClassCallback<T>? createModelClassCallback}) async {
     try {
       var requestStopWatchTimer = Stopwatch();
       requestStopWatchTimer.start();
-      await dioInstance.get(apiEndPoint, data: requestBody ?? {}).then((Response responseFromServer) {
+      await dioInstance.get(apiEndPoint, data: requestBody ?? {}, queryParameters: queryParameters ?? {}).then((Response responseFromServer) {
         var elapsedTimeDuration = requestStopWatchTimer.elapsed.toString();
         requestStopWatchTimer.stop();
 
