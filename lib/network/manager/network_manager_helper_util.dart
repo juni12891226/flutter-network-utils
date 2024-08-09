@@ -228,7 +228,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         NetworkUtil.instance.showLog(
           showRawLogs: showRawLogs,
           networkRequestMethodType: networkRequestMethodType,
-          "URL:::$baseURL$apiEndPoint RawResponseFromServer:::${jsonEncode(responseFromServer.data)} elapsedTimeDuration:::$elapsedTimeDuration",
+          "URL:::$baseURL$apiEndPoint RawResponseFromServer:::${jsonEncode(responseFromServer.data)}\nelapsedTimeDuration:::$elapsedTimeDuration",
         );
       });
     } on DioException catch (dioException) {
@@ -266,7 +266,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         NetworkUtil.instance.showLog(
           showRawLogs: showRawLogs,
           networkRequestMethodType: networkRequestMethodType,
-          "URL:::$baseURL$apiEndPoint RawResponseFromServer:::${jsonEncode(responseFromServer.data)} elapsedTimeDuration:::$elapsedTimeDuration",
+          "URL:::$baseURL$apiEndPoint RawResponseFromServer:::${jsonEncode(responseFromServer.data)}\nelapsedTimeDuration:::$elapsedTimeDuration",
         );
       });
     } on DioException catch (dioException) {
