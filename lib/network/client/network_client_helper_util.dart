@@ -51,7 +51,6 @@ class NetworkClientHelperUtil {
       dio.interceptors.addAll(dioInterceptors);
     }
 
-    dio.interceptors.add(PrettyDioLogger(requestHeader: true, requestBody: true, responseBody: true, responseHeader: false, error: true, compact: false, maxWidth: 2048));
     return dio;
   }
 

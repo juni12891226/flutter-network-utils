@@ -61,7 +61,8 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         requestCompletionCallback: requestCompletionCallback,
         apiEndPoint: apiEndPoint,
         requestHeaders: requestHeaders ?? {},
-        requestMethod: requestMethodType);
+        requestMethod: requestMethodType,
+        dioInterceptors:dioInterceptors);
 
     // dio.httpClientAdapter = IOHttpClientAdapter(
     //     onHttpClientCreate: (_) {
@@ -227,12 +228,7 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         NetworkUtil.instance.showLog(
           showRawLogs: showRawLogs,
           networkRequestMethodType: networkRequestMethodType,
-          "URL:::$baseURL$apiEndPoint elapsedTimeDuration:::$elapsedTimeDuration",
-        );
-        NetworkUtil.instance.showLog(
-          showRawLogs: showRawLogs,
-          networkRequestMethodType: networkRequestMethodType,
-          "URL:::$baseURL$apiEndPoint RawResponseFromServer:::${responseFromServer.data}",
+          "URL:::$baseURL$apiEndPoint RawResponseFromServer:::${jsonEncode(responseFromServer.data)} elapsedTimeDuration:::$elapsedTimeDuration",
         );
       });
     } on DioException catch (dioException) {
@@ -268,14 +264,9 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         requestCompletionCallback(onRequestCompletionGetHelperModel(responseFromServer: responseFromServer, createModelClassCallback: createModelClassCallback));
         //show the time taken by the API call
         NetworkUtil.instance.showLog(
-          networkRequestMethodType: networkRequestMethodType,
-          showRawLogs: showRawLogs,
-          "URL:::$baseURL$apiEndPoint elapsedTimeDuration:::$elapsedTimeDuration",
-        );
-        NetworkUtil.instance.showLog(
           showRawLogs: showRawLogs,
           networkRequestMethodType: networkRequestMethodType,
-          "URL:::$baseURL$apiEndPoint RawResponseFromServer:::${responseFromServer.data}",
+          "URL:::$baseURL$apiEndPoint RawResponseFromServer:::${jsonEncode(responseFromServer.data)} elapsedTimeDuration:::$elapsedTimeDuration",
         );
       });
     } on DioException catch (dioException) {
