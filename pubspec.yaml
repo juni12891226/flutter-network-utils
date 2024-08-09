@@ -15,7 +15,6 @@ dependencies:
 
   dio: ^5.4.0
   internet_connection_checker:
-  pretty_dio_logger: ^1.3.1
 
 dev_dependencies:
   flutter_test:
