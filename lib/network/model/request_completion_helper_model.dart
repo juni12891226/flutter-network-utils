@@ -6,11 +6,13 @@ class RequestCompletionHelperModel<T> {
   RequestCompletionStatusEnums responseCompletionStatus;
   String? reason;
   T? responseWrapper;
+  int status;
 
   RequestCompletionHelperModel(
       {this.responseWrapper,
       this.reason,
       this.requestResponse,
       required this.isSuccess,
+      required this.status,
       required this.responseCompletionStatus});
 }
