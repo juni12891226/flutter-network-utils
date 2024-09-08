@@ -19,6 +19,15 @@ abstract class RequestValidatorHelperUtil {
       required bool showRawLogs,
       required NetworkRequestMethodType networkRequestMethodType});
 
+  Future<void> processUploadRequest<T extends Decodable>(
+      {required String baseURL,
+        required String apiEndPoint,
+        required Dio dioInstance,
+        FormData? formData,
+        required RequestCompletionCallback requestCompletionCallback,
+        required bool showRawLogs,
+        required NetworkRequestMethodType networkRequestMethodType});
+
   bool isValidResponseJson(Response responseFromServer);
 
   RequestCompletionHelperModel onRequestCompletionGetHelperModel<T extends Decodable>(
