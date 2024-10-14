@@ -159,7 +159,6 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
         //success
         return RequestCompletionHelperModel(
             status: NetworkLayerConstants.success,
-            // responseWrapper: responseWrapper,
             reasonFromServer: isValidResponseJson(responseFromServer) ? NetworkUtil.instance.getReasonFromServer(jsonEncode(responseFromServer.data)) : null,
             requestResponse: jsonEncode(responseFromServer.data),
             reasonFromDIOLayer: "Success (200).",

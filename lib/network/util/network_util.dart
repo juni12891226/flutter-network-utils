@@ -45,6 +45,6 @@ class NetworkUtil {
   String? getReasonFromServer(String json) {
     var parsedJson = jsonDecode(json);
     // Access the value by key
-    return parsedJson['message1'];
+    return parsedJson['message'];
   }
 }
