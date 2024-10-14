@@ -181,28 +181,50 @@ class NetworkManagerHelperUtil implements RequestValidatorHelperUtil {
       }
     } else if (statusCodeFromServer == NetworkLayerConstants.badRequest) {
       return RequestCompletionHelperModel(
-          status: NetworkLayerConstants.badRequest, reason: "Bad Request (400).", responseCompletionStatus: RequestCompletionStatusEnums.badRequest, isSuccess: false);
+          requestResponse: isValidResponseJson(responseFromServer) ? jsonEncode(responseFromServer.data) : null,
+          status: NetworkLayerConstants.badRequest,
+          reason: "Bad Request (400).",
+          responseCompletionStatus: RequestCompletionStatusEnums.badRequest,
+          isSuccess: false);
     } else if (statusCodeFromServer == NetworkLayerConstants.noContent) {
       return RequestCompletionHelperModel(
-          status: NetworkLayerConstants.noContent, reason: "No content (201).", responseCompletionStatus: RequestCompletionStatusEnums.noContent, isSuccess: false);
+          requestResponse: isValidResponseJson(responseFromServer) ? jsonEncode(responseFromServer.data) : null,
+          status: NetworkLayerConstants.noContent,
+          reason: "No content (201).",
+          responseCompletionStatus: RequestCompletionStatusEnums.noContent,
+          isSuccess: false);
     } else if (statusCodeFromServer == NetworkLayerConstants.unAuthorised) {
       return RequestCompletionHelperModel(
-          status: NetworkLayerConstants.unAuthorised, reason: "UnAuthorised (401).", responseCompletionStatus: RequestCompletionStatusEnums.unAuthorised, isSuccess: false);
+          requestResponse: isValidResponseJson(responseFromServer) ? jsonEncode(responseFromServer.data) : null,
+          status: NetworkLayerConstants.unAuthorised,
+          reason: "UnAuthorised (401).",
+          responseCompletionStatus: RequestCompletionStatusEnums.unAuthorised,
+          isSuccess: false);
     } else if (statusCodeFromServer == NetworkLayerConstants.forbidden) {
       return RequestCompletionHelperModel(
-          status: NetworkLayerConstants.forbidden, reason: "Forbidden (403).", responseCompletionStatus: RequestCompletionStatusEnums.forbidden, isSuccess: false);
+          requestResponse: isValidResponseJson(responseFromServer) ? jsonEncode(responseFromServer.data) : null,
+          status: NetworkLayerConstants.forbidden,
+          reason: "Forbidden (403).",
+          responseCompletionStatus: RequestCompletionStatusEnums.forbidden,
+          isSuccess: false);
     } else if (statusCodeFromServer == NetworkLayerConstants.internalServerError) {
       return RequestCompletionHelperModel(
+          requestResponse: isValidResponseJson(responseFromServer) ? jsonEncode(responseFromServer.data) : null,
           status: NetworkLayerConstants.internalServerError,
           reason: "Internal Server Error (500).",
           responseCompletionStatus: RequestCompletionStatusEnums.internalServerError,
           isSuccess: false);
     } else if (statusCodeFromServer == NetworkLayerConstants.notFound) {
       return RequestCompletionHelperModel(
-          status: NetworkLayerConstants.notFound, reason: "Not found (404).", responseCompletionStatus: RequestCompletionStatusEnums.notFound, isSuccess: false);
+          requestResponse: isValidResponseJson(responseFromServer) ? jsonEncode(responseFromServer.data) : null,
+          status: NetworkLayerConstants.notFound,
+          reason: "Not found (404).",
+          responseCompletionStatus: RequestCompletionStatusEnums.notFound,
+          isSuccess: false);
     } else {
       //unknown result code
       return RequestCompletionHelperModel(
+          requestResponse: isValidResponseJson(responseFromServer) ? jsonEncode(responseFromServer.data) : null,
           status: NetworkLayerConstants.unknown,
           reason: "Unknown status code from server.",
           responseCompletionStatus: RequestCompletionStatusEnums.unknownStatus,
