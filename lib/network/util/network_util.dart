@@ -41,4 +41,10 @@ class NetworkUtil {
   void hideKeyboard() {
     FocusManager.instance.primaryFocus?.unfocus();
   }
+
+  String? getReasonFromServer(String json) {
+    var parsedJson = jsonDecode(json);
+    // Access the value by key
+    return parsedJson['message1'];
+  }
 }

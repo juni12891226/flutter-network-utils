@@ -4,15 +4,17 @@ class RequestCompletionHelperModel<T> {
   String? requestResponse;
   bool isSuccess;
   RequestCompletionStatusEnums responseCompletionStatus;
-  String? reason;
+  String? reasonFromDIOLayer;
+  String? reasonFromServer;
   T? responseWrapper;
   int status;
 
   RequestCompletionHelperModel(
       {this.responseWrapper,
-      this.reason,
+      this.reasonFromDIOLayer,
       this.requestResponse,
       required this.isSuccess,
+      this.reasonFromServer,
       required this.status,
       required this.responseCompletionStatus});
 }
